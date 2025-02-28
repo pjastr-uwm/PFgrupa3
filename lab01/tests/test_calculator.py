@@ -13,6 +13,10 @@ class TestCalculator(unittest.TestCase):
     def test_sum_two_ints_negative(self):
         self.assertNotEqual(self.calculator.add(4, 5), -4)
 
+    def test_divide_by_zero(self):
+        with self.assertRaises(ZeroDivisionError):
+            self.calculator.divide(4, 0)
+
     def tearDown(self):
         pass
 
