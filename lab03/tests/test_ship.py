@@ -1,6 +1,7 @@
 import unittest
 from src.ship import Ship
 
+
 class TestShipInitialization(unittest.TestCase):
 
     def setUp(self):
