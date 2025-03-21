@@ -16,7 +16,7 @@ class Produkt:
         return self.cena * self.ilosc_na_stanie
 
 
-class Koszyk():
+class Koszyk:
     koszyki_count = 0
 
     def __init__(self):
