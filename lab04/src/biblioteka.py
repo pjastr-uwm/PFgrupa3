@@ -1,19 +1,19 @@
-class biblioteka():
+class Biblioteka():
     def __init__(self, nazwa_biblioteki="Moja Biblioteka"):
         self.nazwa_biblioteki = nazwa_biblioteki
         self.ksiazki = []
         self.czytelnicy = {}
-        self.ID = 0
+        self.id = 0
 
-    def Dodaj_ksiazke(self, tytul, autor, rok_wydania):
-        self.ID += 1
-        nowa_ksiazka = {'id': self.ID, 'tytul': tytul, 'autor': autor,
+    def dodaj_ksiazke(self, tytul, autor, rok_wydania):
+        self.id += 1
+        nowa_ksiazka = {'id': self.id, 'tytul': tytul, 'autor': autor,
                         'rok_wydania': rok_wydania, 'wypozyczona': False,
                         'czytelnik': None}
         self.ksiazki.append(nowa_ksiazka)
-        return self.ID
+        return self.id
 
-    def UsunKsiazke(self, id_ksiazki):
+    def usun_ksiazke(self, id_ksiazki):
         for ksiazka in self.ksiazki:
             if ksiazka['id'] == id_ksiazki:
                 self.ksiazki.remove(ksiazka)
@@ -29,14 +29,16 @@ class biblioteka():
         return wyniki
 
     def wypozycz(self, id_ksiazki, czytelnik_id):
+        # pylint: disable=C0200
         for i in range(0, len(self.ksiazki)):
             if self.ksiazki[i]['id'] == id_ksiazki:
                 if not self.ksiazki[i]['wypozyczona']:
                     self.ksiazki[i]['wypozyczona'] = True
                     self.ksiazki[i]['czytelnik'] = czytelnik_id
                     return True
-                else:
-                    return False
+
+                return False
+
         return False
 
     def oddaj(self, id_ksiazki):
@@ -48,11 +50,11 @@ class biblioteka():
         return False
 
     def lista_ksiazek(self):
-        if (len(self.ksiazki) == 0):
+        if len(self.ksiazki) == 0:
             print("Brak książek w bibliotece")
             return []
-        else:
-            return self.ksiazki
+
+        return self.ksiazki
 
     def dodaj_czytelnika(self, imie, nazwisko, adres):
         czytelnik_id = len(self.czytelnicy) + 1
