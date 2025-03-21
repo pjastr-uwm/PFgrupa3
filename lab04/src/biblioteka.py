@@ -23,8 +23,8 @@ class biblioteka():
     def znajdz_ksiazke(self, fraza):
         wyniki = []
         for ksiazka in self.ksiazki:
-            if (fraza.lower() in ksiazka['tytul'].lower() or
-                    fraza.lower() in ksiazka['autor'].lower()):
+            if (fraza.lower() in ksiazka['tytul'].lower()
+                    or fraza.lower() in ksiazka['autor'].lower()):
                 wyniki.append(ksiazka)
         return wyniki
 
