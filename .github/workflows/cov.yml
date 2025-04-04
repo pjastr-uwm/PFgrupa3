@@ -1,0 +1,29 @@
+name: Python tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./lab06
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          pip install coverage
+      - name: Run tests with coverage
+        run: |
+          coverage run -m --branch unittest discover -s tests
+          coverage report -m
+          coverage html
+      - name: Upload coverage report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: lab06/htmlcov
