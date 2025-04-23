@@ -14,3 +14,7 @@ def test_calculate_negative():
 def test_invalid_discount():
     with pytest.raises(ValueError):
         calculate_discounted_price(100, "P")
+
+def test_invalid_price():
+    with pytest.raises(ValueError):
+        calculate_discounted_price(-3, 4)
